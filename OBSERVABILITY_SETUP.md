@@ -98,6 +98,14 @@ gcloud projects add-iam-policy-binding [YOUR_PROJECT] \
   --role="roles/bigquery.dataEditor"
 ```
 
+### Step 3.6: Configure Cloud Monitoring for ADK Metrics (Histograms)
+To export OpenTelemetry native metrics (like `gen_ai.invoke_agent.duration`, `gen_ai.client.token.usage`) to BigQuery, we first send them to Cloud Monitoring (already configured in `agent.py`). Then, we export them from Monitoring to BigQuery.
+
+Currently, this requires configuring a Cloud Monitoring export or using federated queries in BigQuery:
+1. Go to the [Metrics Explorer](https://console.cloud.google.com/monitoring/metrics-explorer) in GCP.
+2. The ADK metrics will appear under the prefix `workload.googleapis.com/gen_ai`.
+3. To query these from BigQuery, you can configure [Cloud Monitoring as an External Data Source](https://cloud.google.com/bigquery/docs/cloud-monitoring-federated-queries) in BigQuery, or set up a [Metrics Export](https://cloud.google.com/monitoring/export-metrics) if long-term storage of these specific aggregations is required.
+
 ---
 
 ## 4. Official Reference Links

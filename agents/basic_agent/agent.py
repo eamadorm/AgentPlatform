@@ -11,7 +11,12 @@ from google.genai.types import (
     ToolConfig,
     FunctionCallingConfig,
 )
+from google.adk.telemetry.google_cloud import get_gcp_exporters
+from google.adk.telemetry.setup import maybe_set_otel_providers
 
+# Initialize Cloud Monitoring Exporters for Metrics
+gcp_exporters = get_gcp_exporters(enable_cloud_metrics=True)
+maybe_set_otel_providers([gcp_exporters])
 
 # Mock tool implementation
 def get_current_time(city: str) -> dict:
