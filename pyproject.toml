@@ -9,11 +9,15 @@ dependencies = []
 [dependency-groups]
 basic-agent = [
     "fsspec[gcs]==2025.10.0",
-    "google-adk>=2.6.3",
+    "google-adk[otel-gcp]>=2.6.3",
+    "google-cloud-aiplatform>=1.164.0",
     "google-cloud-logging>=3.16.2",
     "google-cloud-trace>=1.20.0",
     "google-genai>=2.17.0",
+    "loguru>=0.7.3",
+    "opentelemetry-exporter-gcp-logging>=1.14.0a0",
     "opentelemetry-exporter-gcp-trace>=1.14.0",
+    "opentelemetry-exporter-otlp>=1.42.1",
     "opentelemetry-instrumentation-google-genai>=0.7b1",
     "opentelemetry-sdk>=1.42.1",
     "pydantic>=2.13.4",

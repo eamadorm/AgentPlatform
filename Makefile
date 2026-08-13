@@ -23,4 +23,4 @@ run-precommit:
 
 run-basic-agent:
 	cd agents && \
-	uv run --group basic-agent adk web --port 8000 
+	uv run --group basic-agent adk web --port 8000 --otel_to_cloud 
